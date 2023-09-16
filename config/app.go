@@ -18,12 +18,13 @@ func init() {
 	config := facades.Config()
 
 	config.Add("app", map[string]any{
-		"env": config.Get("APP_ENV", "production"),
+		"env":  config.Get("APP_ENV", "production"),
+		"port": config.Get("APP_PORT", "8000"),
 		"providers": []foundation.ServiceProvider{
-			&BootstrapSchedule.TaskSchedulerServiceProvider{},
 			&database.ServiceProvider{},
 			&log.ServiceProvider{},
 			&schedule.ServiceProvider{},
+			&BootstrapSchedule.TaskSchedulerServiceProvider{},
 		},
 		"timezone": carbon.UTC,
 	})
