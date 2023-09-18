@@ -9,6 +9,7 @@ import (
 
 	"github.com/fwidjaya20/symphonic-skeleton/bootstrap"
 	"github.com/fwidjaya20/symphonic-skeleton/bootstrap/http"
+	SharedContext "github.com/fwidjaya20/symphonic-skeleton/shared/context"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -36,6 +37,15 @@ func main() {
 		HSTSPreloadEnabled:    true,
 		ReferrerPolicy:        "same-origin",
 	}))
+
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			sc := &SharedContext.SymphonicContext{
+				Context: c,
+			}
+			return next(sc)
+		}
+	})
 
 	go func() {
 		kernel := http.Kernel{}
