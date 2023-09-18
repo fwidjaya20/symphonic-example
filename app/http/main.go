@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/fwidjaya20/symphonic-skeleton/bootstrap"
+	"github.com/fwidjaya20/symphonic-skeleton/bootstrap/http"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -37,6 +38,10 @@ func main() {
 	}))
 
 	go func() {
+		kernel := http.Kernel{}
+
+		kernel.Routes(e)
+
 		if err := e.Start(fmt.Sprintf(":%v", facades.Config().Get("app.port"))); nil != err {
 			e.Logger.Fatal("shutting down the server")
 		}
