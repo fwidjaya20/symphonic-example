@@ -3,7 +3,7 @@ module github.com/fwidjaya20/symphonic-skeleton
 go 1.21.1
 
 require (
-	github.com/fwidjaya20/symphonic v1.0.1
+	github.com/fwidjaya20/symphonic v1.1.0
 	github.com/golang-module/carbon v1.7.3
 	github.com/labstack/echo/v4 v4.11.1
 	gorm.io/driver/postgres v1.5.2

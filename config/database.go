@@ -25,6 +25,13 @@ func init() {
 				"username": config.Get("DB_USERNAME", "postgres"),
 				"password": config.Get("DB_PASSWORD", "postgres"),
 			},
+			"redis": map[string]any{
+				"driver":   "redis",
+				"host":     facades.Config().Get("REDIS_HOST", "localhost"),
+				"port":     facades.Config().Get("REDIS_PORT", 6379),
+				"database": facades.Config().Get("REDIS_DATABASE", "0"),
+				"password": facades.Config().Get("REDIS_PASSWORD", ""),
+			},
 		},
 		"default":  config.Get("DB_CONNECTION", "postgresql"),
 		"timezone": carbon.UTC,
