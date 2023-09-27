@@ -1,11 +1,7 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	"os"
-	"os/signal"
-	"time"
 
 	"github.com/fwidjaya20/symphonic-skeleton/bootstrap"
 	"github.com/fwidjaya20/symphonic-skeleton/bootstrap/http"
@@ -47,24 +43,11 @@ func main() {
 		}
 	})
 
-	go func() {
-		kernel := http.Kernel{}
+	kernel := http.Kernel{}
 
-		kernel.Routes(e)
+	kernel.Routes(e)
 
-		if err := e.Start(fmt.Sprintf(":%v", facades.Config().Get("app.port"))); nil != err {
-			e.Logger.Fatal("shutting down the server")
-		}
-	}()
-
-	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, os.Interrupt)
-	<-quit
-
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	if err := e.Shutdown(ctx); nil != err {
-		e.Logger.Fatal(err)
+	if err := e.Start(fmt.Sprintf(":%v", facades.Config().Get("app.port"))); nil != err {
+		e.Logger.Fatal("shutting down the server")
 	}
 }
