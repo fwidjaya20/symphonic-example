@@ -8,8 +8,6 @@ import (
 
 type Repository interface {
 	Create(c echo.Context, m *model.Task) error
-	Update(c echo.Context, m *model.Task) error
-	Delete(c echo.Context, m *model.Task) error
 
 	All(c echo.Context) ([]model.Task, error)
 	FindOne(c echo.Context, id uuid.UUID) (*model.Task, error)

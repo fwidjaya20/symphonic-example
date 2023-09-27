@@ -21,14 +21,6 @@ func (p postgres) Create(c echo.Context, m *model.Task) error {
 	return c.(*context.SymphonicContext).Database.Create(&m).Error
 }
 
-func (p postgres) Update(c echo.Context, m *model.Task) error {
-	return c.(*context.SymphonicContext).Database.Updates(&m).Error
-}
-
-func (p postgres) Delete(c echo.Context, m *model.Task) error {
-	return c.(*context.SymphonicContext).Database.Delete(&m).Error
-}
-
 func (p postgres) All(c echo.Context) ([]model.Task, error) {
 	var (
 		err     error

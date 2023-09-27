@@ -15,10 +15,12 @@ import (
 )
 
 func HttpVer1(e *echo.Echo) {
-	e.POST("/todo", createTodo)
+	e.POST("/task", createTask)
+	e.GET("/task/:task_id", getTaskById)
+	e.GET("/tasks", getAllTasks)
 }
 
-func createTodo(c echo.Context) error {
+func createTask(c echo.Context) error {
 	var (
 		err      error
 		response *public.TaskResponse
@@ -49,6 +51,68 @@ func createTodo(c echo.Context) error {
 	return c.JSON(http.StatusOK, vo.Resolve{
 		Data:     response,
 		Message:  "task has been created successfully",
+		Metadata: nil,
+	})
+}
+
+func getAllTasks(c echo.Context) error {
+	var (
+		err      error
+		response []public.TaskResponse
+	)
+
+	err = database.RunInTransaction(c.(*context.SymphonicContext), func(e echo.Context) error {
+		response, err = ioc.Injector().Task.All.Execute(c)
+		return err
+	})
+	if nil != err {
+		var ex *exception.Exception
+		errors.As(err, &ex)
+		return c.JSON(constant.ToHttpStatusCode(ex.Code), vo.Reject{
+			Code:     ex.Code,
+			Message:  ex.Message,
+			Metadata: nil,
+		})
+	}
+
+	return c.JSON(http.StatusOK, vo.Resolve{
+		Data:     response,
+		Message:  "tasks has been retrieved successfully",
+		Metadata: nil,
+	})
+}
+
+func getTaskById(c echo.Context) error {
+	var (
+		err      error
+		response *public.TaskResponse
+		request  public.GetTaskRequest
+	)
+
+	if err = c.Bind(&request); nil != err {
+		return c.JSON(http.StatusBadRequest, vo.Reject{
+			Code:    constant.ErrInvalidPayload,
+			Message: err.Error(),
+		})
+	}
+
+	err = database.RunInTransaction(c.(*context.SymphonicContext), func(e echo.Context) error {
+		response, err = ioc.Injector().Task.GetById.Execute(c, request)
+		return err
+	})
+	if nil != err {
+		var ex *exception.Exception
+		errors.As(err, &ex)
+		return c.JSON(constant.ToHttpStatusCode(ex.Code), vo.Reject{
+			Code:     ex.Code,
+			Message:  ex.Message,
+			Metadata: nil,
+		})
+	}
+
+	return c.JSON(http.StatusOK, vo.Resolve{
+		Data:     response,
+		Message:  "task has been retrieved successfully",
 		Metadata: nil,
 	})
 }

@@ -6,11 +6,15 @@ import (
 )
 
 type TaskService struct {
-	Create task.CreateHandler
+	Create  task.CreateHandler
+	All     task.AllHandler
+	GetById task.GetByIdHandler
 }
 
 func NewTaskService(repository repository.Repository) TaskService {
 	return TaskService{
-		Create: task.NewCreateHandler(repository),
+		Create:  task.NewCreateHandler(repository),
+		All:     task.NewAllHandler(repository),
+		GetById: task.NewGetByIdHandler(repository),
 	}
 }
