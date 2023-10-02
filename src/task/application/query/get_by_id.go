@@ -1,36 +1,31 @@
-package commands
+package query
 
 import (
 	"github.com/fwidjaya20/symphonic-example/shared/exception"
 	"github.com/fwidjaya20/symphonic-example/src/task/application/public"
 	"github.com/fwidjaya20/symphonic-example/src/task/constant"
-	"github.com/fwidjaya20/symphonic-example/src/task/domain/event"
 	"github.com/fwidjaya20/symphonic-example/src/task/domain/model"
 	"github.com/fwidjaya20/symphonic-example/src/task/domain/service"
 	"github.com/golang-module/carbon"
 	"github.com/labstack/echo/v4"
 )
 
-type CreateHandler struct {
-	event   event.TaskEvent
+type GetByIdHandler struct {
 	service service.TaskService
 }
 
-func (h CreateHandler) Execute(c echo.Context, request public.CreateTaskRequest) (*public.TaskResponse, error) {
+func (h GetByIdHandler) Execute(c echo.Context, request public.GetTaskRequest) (*public.TaskResponse, error) {
 	var (
-		err  error
-		task *model.Task
+		err      error
+		task     *model.Task
+		response public.TaskResponse
 	)
 
-	if task, err = h.service.Create.Execute(c, request); nil != err {
+	if task, err = h.service.GetById.Execute(c, request); nil != err {
 		return nil, exception.New(err, constant.ErrCreateRecord, err.Error(), nil)
 	}
 
-	if err = h.event.TaskCreated.Publish(*task); nil != err {
-		return nil, exception.New(err, constant.ErrPublishCreatedRecord, err.Error(), nil)
-	}
-
-	response := public.TaskResponse{
+	response = public.TaskResponse{
 		Id:          task.Id,
 		Title:       task.Title,
 		IsCompleted: task.IsCompleted,
@@ -46,9 +41,8 @@ func (h CreateHandler) Execute(c echo.Context, request public.CreateTaskRequest)
 	return &response, nil
 }
 
-func NewCreateHandler(event event.TaskEvent, service service.TaskService) CreateHandler {
-	return CreateHandler{
-		event:   event,
+func NewGetByIdHandler(service service.TaskService) GetByIdHandler {
+	return GetByIdHandler{
 		service: service,
 	}
 }

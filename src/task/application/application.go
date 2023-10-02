@@ -1,22 +1,22 @@
 package application
 
 import (
-	"github.com/fwidjaya20/symphonic-example/src/task/application/commands"
-	"github.com/fwidjaya20/symphonic-example/src/task/application/queries"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/command"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/query"
 	"github.com/fwidjaya20/symphonic-example/src/task/domain/event"
 	"github.com/fwidjaya20/symphonic-example/src/task/domain/service"
 )
 
 type TaskApplication struct {
-	Create  commands.CreateHandler
-	All     queries.AllHandler
-	GetById queries.GetByIdHandler
+	Create  command.CreateHandler
+	All     query.AllHandler
+	GetById query.GetByIdHandler
 }
 
 func NewTaskApplication(event event.TaskEvent, service service.TaskService) TaskApplication {
 	return TaskApplication{
-		Create:  commands.NewCreateHandler(event, service),
-		All:     queries.NewAllHandler(service),
-		GetById: queries.NewGetByIdHandler(service),
+		Create:  command.NewCreateHandler(event, service),
+		All:     query.NewAllHandler(service),
+		GetById: query.NewGetByIdHandler(service),
 	}
 }

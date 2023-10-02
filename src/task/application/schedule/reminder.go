@@ -1,4 +1,4 @@
-package schedules
+package schedule
 
 import (
 	"fmt"

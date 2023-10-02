@@ -1,4 +1,4 @@
-package queries
+package query
 
 import (
 	"github.com/fwidjaya20/symphonic-example/shared/exception"
