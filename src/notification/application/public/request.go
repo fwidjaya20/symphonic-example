@@ -1,6 +1,6 @@
 package public
 
-import NotificationEnum "github.com/fwidjaya20/symphonic-skeleton/shared/enum/notification"
+import NotificationEnum "github.com/fwidjaya20/symphonic-example/shared/enum/notification"
 
 type SendNotificationRequest struct {
 	Channel NotificationEnum.Channel `json:"channel"`

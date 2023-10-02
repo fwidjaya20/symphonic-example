@@ -1,11 +1,11 @@
 package queries
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/shared/exception"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/public"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/constant"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/model"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/service"
+	"github.com/fwidjaya20/symphonic-example/shared/exception"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/public"
+	"github.com/fwidjaya20/symphonic-example/src/task/constant"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/model"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/service"
 	"github.com/golang-module/carbon"
 	"github.com/labstack/echo/v4"
 )

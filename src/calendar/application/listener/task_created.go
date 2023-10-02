@@ -1,10 +1,10 @@
 package listener
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/domain/entity"
-	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/infrastructure/calendar"
-	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/infrastructure/calendar/google"
-	TaskEvent "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event/task"
+	"github.com/fwidjaya20/symphonic-example/src/calendar/domain/entity"
+	"github.com/fwidjaya20/symphonic-example/src/calendar/infrastructure/calendar"
+	"github.com/fwidjaya20/symphonic-example/src/calendar/infrastructure/calendar/google"
+	TaskEvent "github.com/fwidjaya20/symphonic-example/src/task/domain/event/task"
 	ContractEvent "github.com/fwidjaya20/symphonic/contracts/event"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"

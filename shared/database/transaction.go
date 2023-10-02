@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/shared/context"
+	"github.com/fwidjaya20/symphonic-example/shared/context"
 	"github.com/labstack/echo/v4"
 )
 

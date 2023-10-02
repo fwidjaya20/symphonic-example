@@ -1,4 +1,4 @@
-module github.com/fwidjaya20/symphonic-skeleton
+module github.com/fwidjaya20/symphonic-example
 
 go 1.21.1
 

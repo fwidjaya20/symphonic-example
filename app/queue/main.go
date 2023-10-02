@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/bootstrap"
+	"github.com/fwidjaya20/symphonic-example/bootstrap"
 )
 
 func main() {

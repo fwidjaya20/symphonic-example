@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/repository"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/service/task"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/repository"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/service/task"
 )
 
 type TaskService struct {

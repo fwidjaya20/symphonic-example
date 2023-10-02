@@ -3,7 +3,7 @@ package http
 import (
 	"net/http"
 
-	TaskPresentation "github.com/fwidjaya20/symphonic-skeleton/src/task/presentation"
+	TaskPresentation "github.com/fwidjaya20/symphonic-example/src/task/presentation"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 )

@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/public"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/model"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/repository"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/public"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/model"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/repository"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 )

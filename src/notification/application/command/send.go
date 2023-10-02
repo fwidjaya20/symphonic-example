@@ -3,11 +3,11 @@ package command
 import (
 	"fmt"
 
-	"github.com/fwidjaya20/symphonic-skeleton/shared/exception"
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/application/public"
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/constant"
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/domain/entity"
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/infrastructure/cloud_messaging"
+	"github.com/fwidjaya20/symphonic-example/shared/exception"
+	"github.com/fwidjaya20/symphonic-example/src/notification/application/public"
+	"github.com/fwidjaya20/symphonic-example/src/notification/constant"
+	"github.com/fwidjaya20/symphonic-example/src/notification/domain/entity"
+	"github.com/fwidjaya20/symphonic-example/src/notification/infrastructure/cloud_messaging"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 )

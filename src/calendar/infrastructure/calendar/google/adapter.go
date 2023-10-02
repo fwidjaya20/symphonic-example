@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/domain/entity"
-	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/infrastructure/calendar"
+	"github.com/fwidjaya20/symphonic-example/src/calendar/domain/entity"
+	"github.com/fwidjaya20/symphonic-example/src/calendar/infrastructure/calendar"
 	"github.com/golang-module/carbon"
 )
 

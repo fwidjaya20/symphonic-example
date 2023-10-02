@@ -1,8 +1,8 @@
 package schedule
 
 import (
-	SharedContext "github.com/fwidjaya20/symphonic-skeleton/shared/context"
-	TaskSchedule "github.com/fwidjaya20/symphonic-skeleton/src/task/application/schedules"
+	SharedContext "github.com/fwidjaya20/symphonic-example/shared/context"
+	TaskSchedule "github.com/fwidjaya20/symphonic-example/src/task/application/schedules"
 	"github.com/fwidjaya20/symphonic/contracts/schedule"
 	"github.com/labstack/echo/v4"
 )

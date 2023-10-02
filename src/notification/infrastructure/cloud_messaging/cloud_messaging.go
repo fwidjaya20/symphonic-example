@@ -1,8 +1,8 @@
 package cloud_messaging
 
 import (
-	NotificationEnum "github.com/fwidjaya20/symphonic-skeleton/shared/enum/notification"
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/domain/entity"
+	NotificationEnum "github.com/fwidjaya20/symphonic-example/shared/enum/notification"
+	"github.com/fwidjaya20/symphonic-example/src/notification/domain/entity"
 )
 
 type CloudMessaging interface {

@@ -3,7 +3,7 @@ package cloud_messaging
 import (
 	"fmt"
 
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/domain/entity"
+	"github.com/fwidjaya20/symphonic-example/src/notification/domain/entity"
 )
 
 type FCM struct{}

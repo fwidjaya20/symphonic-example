@@ -3,11 +3,11 @@ package ioc
 import (
 	"sync"
 
-	Notification "github.com/fwidjaya20/symphonic-skeleton/src/notification/application"
-	Task "github.com/fwidjaya20/symphonic-skeleton/src/task/application"
-	TaskEvent "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event"
-	TaskService "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/service"
-	TaskRepository "github.com/fwidjaya20/symphonic-skeleton/src/task/infrastructure/database"
+	Notification "github.com/fwidjaya20/symphonic-example/src/notification/application"
+	Task "github.com/fwidjaya20/symphonic-example/src/task/application"
+	TaskEvent "github.com/fwidjaya20/symphonic-example/src/task/domain/event"
+	TaskService "github.com/fwidjaya20/symphonic-example/src/task/domain/service"
+	TaskRepository "github.com/fwidjaya20/symphonic-example/src/task/infrastructure/database"
 )
 
 type Container struct {

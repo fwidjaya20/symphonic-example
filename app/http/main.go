@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/fwidjaya20/symphonic-skeleton/bootstrap"
-	"github.com/fwidjaya20/symphonic-skeleton/bootstrap/http"
-	SharedContext "github.com/fwidjaya20/symphonic-skeleton/shared/context"
+	"github.com/fwidjaya20/symphonic-example/bootstrap"
+	"github.com/fwidjaya20/symphonic-example/bootstrap/http"
+	SharedContext "github.com/fwidjaya20/symphonic-example/shared/context"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

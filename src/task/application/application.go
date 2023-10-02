@@ -1,10 +1,10 @@
 package application
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/commands"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/queries"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/service"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/commands"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/queries"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/event"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/service"
 )
 
 type TaskApplication struct {

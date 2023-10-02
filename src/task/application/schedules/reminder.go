@@ -3,10 +3,10 @@ package schedules
 import (
 	"fmt"
 
-	"github.com/fwidjaya20/symphonic-skeleton/ioc"
-	"github.com/fwidjaya20/symphonic-skeleton/shared/context"
-	"github.com/fwidjaya20/symphonic-skeleton/shared/database"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/public"
+	"github.com/fwidjaya20/symphonic-example/ioc"
+	"github.com/fwidjaya20/symphonic-example/shared/context"
+	"github.com/fwidjaya20/symphonic-example/shared/database"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/public"
 	ContractSchedule "github.com/fwidjaya20/symphonic/contracts/schedule"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/fwidjaya20/symphonic/schedule"

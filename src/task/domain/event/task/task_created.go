@@ -3,7 +3,7 @@ package task
 import (
 	"time"
 
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/model"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/model"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/google/uuid"
 )

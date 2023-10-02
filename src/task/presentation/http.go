@@ -4,13 +4,13 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/fwidjaya20/symphonic-skeleton/ioc"
-	"github.com/fwidjaya20/symphonic-skeleton/shared/context"
-	"github.com/fwidjaya20/symphonic-skeleton/shared/database"
-	"github.com/fwidjaya20/symphonic-skeleton/shared/exception"
-	"github.com/fwidjaya20/symphonic-skeleton/shared/vo"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/public"
-	"github.com/fwidjaya20/symphonic-skeleton/src/task/constant"
+	"github.com/fwidjaya20/symphonic-example/ioc"
+	"github.com/fwidjaya20/symphonic-example/shared/context"
+	"github.com/fwidjaya20/symphonic-example/shared/database"
+	"github.com/fwidjaya20/symphonic-example/shared/exception"
+	"github.com/fwidjaya20/symphonic-example/shared/vo"
+	"github.com/fwidjaya20/symphonic-example/src/task/application/public"
+	"github.com/fwidjaya20/symphonic-example/src/task/constant"
 	"github.com/labstack/echo/v4"
 )
 

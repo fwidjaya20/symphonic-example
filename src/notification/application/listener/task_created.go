@@ -3,10 +3,10 @@ package listener
 import (
 	"fmt"
 
-	"github.com/fwidjaya20/symphonic-skeleton/ioc"
-	NotificationEnum "github.com/fwidjaya20/symphonic-skeleton/shared/enum/notification"
-	"github.com/fwidjaya20/symphonic-skeleton/src/notification/application/public"
-	TaskEvent "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event/task"
+	"github.com/fwidjaya20/symphonic-example/ioc"
+	NotificationEnum "github.com/fwidjaya20/symphonic-example/shared/enum/notification"
+	"github.com/fwidjaya20/symphonic-example/src/notification/application/public"
+	TaskEvent "github.com/fwidjaya20/symphonic-example/src/task/domain/event/task"
 	ContractEvent "github.com/fwidjaya20/symphonic/contracts/event"
 	"github.com/golang-module/carbon"
 	"github.com/labstack/echo/v4"

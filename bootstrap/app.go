@@ -1,7 +1,7 @@
 package bootstrap
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/config"
+	"github.com/fwidjaya20/symphonic-example/config"
 	"github.com/fwidjaya20/symphonic/foundation"
 )
 
