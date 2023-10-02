@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	Task "github.com/fwidjaya20/symphonic-skeleton/src/task/application"
+	TaskEvent "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event"
 	TaskService "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/service"
 	TaskRepository "github.com/fwidjaya20/symphonic-skeleton/src/task/infrastructure/database"
 )
@@ -27,9 +28,10 @@ func Injector() Container {
 
 func newContainer() Container {
 	taskRepository := TaskRepository.NewPostgresRepository()
+	taskEvent := TaskEvent.NewTaskEvent()
 	taskService := TaskService.NewTaskService(taskRepository)
 
 	return Container{
-		Task: Task.NewTaskApplication(taskService),
+		Task: Task.NewTaskApplication(taskEvent, taskService),
 	}
 }

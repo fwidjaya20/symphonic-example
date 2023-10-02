@@ -1,7 +1,13 @@
 package event
 
-import "github.com/labstack/echo/v4"
+import "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event/task"
 
-type TaskEvent interface {
-	PublishTaskCreated(c echo.Context) error
+type TaskEvent struct {
+	TaskCreated task.PublisherTaskCreated
+}
+
+func NewTaskEvent() TaskEvent {
+	return TaskEvent{
+		TaskCreated: task.PublisherTaskCreated{},
+	}
 }
