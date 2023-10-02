@@ -1,4 +1,4 @@
-package listeners
+package listener
 
 import (
 	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/domain/entity"
@@ -16,7 +16,7 @@ type TaskCreatedSubscriber struct {
 }
 
 func (l *TaskCreatedSubscriber) Signature() string {
-	return "Task Created Subscriber"
+	return "[Calendar] Task Created Subscriber"
 }
 
 func (l *TaskCreatedSubscriber) Handle(job ContractEvent.Job) error {

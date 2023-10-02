@@ -10,9 +10,9 @@ const (
 
 func ToHttpStatusCode(code string) int {
 	switch code {
-	case ErrCreateRecord, ErrPublishCreatedRecord:
-		return http.StatusInternalServerError
-	default:
+	case ErrInvalidPayload:
 		return http.StatusBadRequest
+	default:
+		return http.StatusInternalServerError
 	}
 }

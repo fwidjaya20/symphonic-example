@@ -2,7 +2,8 @@ package event
 
 import (
 	SharedContext "github.com/fwidjaya20/symphonic-skeleton/shared/context"
-	"github.com/fwidjaya20/symphonic-skeleton/src/calendar/application/listeners"
+	CalendarListener "github.com/fwidjaya20/symphonic-skeleton/src/calendar/application/listener"
+	NotificationListener "github.com/fwidjaya20/symphonic-skeleton/src/notification/application/listener"
 	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event/task"
 	ContractEvent "github.com/fwidjaya20/symphonic/contracts/event"
 	"github.com/labstack/echo/v4"
@@ -20,7 +21,8 @@ func (k *Kernel) Listeners() ContractEvent.Collection {
 
 	return ContractEvent.Collection{
 		task.TaskCreated{}.Signature(): []ContractEvent.Listener{
-			listeners.NewTaskCreatedSubscriber(ctx),
+			CalendarListener.NewTaskCreatedSubscriber(ctx),
+			NotificationListener.NewTaskCreatedSubscriber(ctx),
 		},
 	}
 }

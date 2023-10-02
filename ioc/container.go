@@ -3,6 +3,7 @@ package ioc
 import (
 	"sync"
 
+	Notification "github.com/fwidjaya20/symphonic-skeleton/src/notification/application"
 	Task "github.com/fwidjaya20/symphonic-skeleton/src/task/application"
 	TaskEvent "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/event"
 	TaskService "github.com/fwidjaya20/symphonic-skeleton/src/task/domain/service"
@@ -10,7 +11,8 @@ import (
 )
 
 type Container struct {
-	Task Task.TaskApplication
+	Notification Notification.NotificationApplication
+	Task         Task.TaskApplication
 }
 
 var (
@@ -32,6 +34,7 @@ func newContainer() Container {
 	taskService := TaskService.NewTaskService(taskRepository)
 
 	return Container{
-		Task: Task.NewTaskApplication(taskEvent, taskService),
+		Notification: Notification.NewNotificationApplication(),
+		Task:         Task.NewTaskApplication(taskEvent, taskService),
 	}
 }
