@@ -30,7 +30,7 @@ func (h CreateHandler) Execute(c echo.Context, request public.CreateTaskRequest)
 		IsCompleted: task.IsCompleted,
 		IsPriority:  task.IsPriority,
 		DueDate:     task.DueDate,
-		FmtDueDate:  carbon.Parse(task.DueDate.String()).Format("MMM, DD YYYY HH:ii:ss"),
+		FmtDueDate:  carbon.Parse(task.DueDate.String()).Format("M, d Y H:i:s O"),
 	}
 
 	if task.Description.Valid {

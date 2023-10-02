@@ -31,7 +31,7 @@ func (h GetByIdHandler) Execute(c echo.Context, request public.GetTaskRequest) (
 		IsCompleted: task.IsCompleted,
 		IsPriority:  task.IsPriority,
 		DueDate:     task.DueDate,
-		FmtDueDate:  carbon.Parse(task.DueDate.String()).Format("M, D Y H:i:s"),
+		FmtDueDate:  carbon.Parse(task.DueDate.String()).Format("M, d Y H:i:s O"),
 	}
 
 	if task.Description.Valid {

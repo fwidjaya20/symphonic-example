@@ -4,6 +4,7 @@ import (
 	"errors"
 
 	"github.com/fwidjaya20/symphonic-skeleton/shared/context"
+	"github.com/fwidjaya20/symphonic-skeleton/src/task/application/public"
 	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/model"
 	"github.com/fwidjaya20/symphonic-skeleton/src/task/domain/repository"
 	"github.com/google/uuid"
@@ -21,7 +22,7 @@ func (p postgres) Create(c echo.Context, m *model.Task) error {
 	return c.(*context.SymphonicContext).Database.Create(&m).Error
 }
 
-func (p postgres) All(c echo.Context) ([]model.Task, error) {
+func (p postgres) All(c echo.Context, payload public.GetTasksRequest) ([]model.Task, error) {
 	var (
 		err     error
 		results = make([]model.Task, 0)
@@ -31,7 +32,9 @@ func (p postgres) All(c echo.Context) ([]model.Task, error) {
 
 	if err = ctx.Database.
 		Model(&model.Task{}).
-		Order(`"tasks"."created_at" DESC`).
+		Where(`"tasks"."is_completed" = ?`, payload.IsCompleted).
+		Order(`"tasks"."due_date" ASC`).
+		Order(`"tasks"."is_priority" DESC`).
 		Find(&results).
 		Error; nil != err {
 		if errors.Is(err, gorm.ErrRecordNotFound) {

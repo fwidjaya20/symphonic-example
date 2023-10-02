@@ -59,10 +59,18 @@ func getAllTasks(c echo.Context) error {
 	var (
 		err      error
 		response []public.TaskResponse
+		request  public.GetTasksRequest
 	)
 
+	if err = c.Bind(&request); nil != err {
+		return c.JSON(http.StatusBadRequest, vo.Reject{
+			Code:    constant.ErrInvalidPayload,
+			Message: err.Error(),
+		})
+	}
+
 	err = database.RunInTransaction(c.(*context.SymphonicContext), func(e echo.Context) error {
-		response, err = ioc.Injector().Task.All.Execute(c)
+		response, err = ioc.Injector().Task.All.Execute(c, request)
 		return err
 	})
 	if nil != err {

@@ -1,7 +1,6 @@
 package database
 
 import (
-	"github.com/fwidjaya20/symphonic-skeleton/config"
 	"github.com/fwidjaya20/symphonic-skeleton/shared/context"
 	"github.com/labstack/echo/v4"
 )
@@ -9,7 +8,7 @@ import (
 type TxCallback = func(e echo.Context) error
 
 func RunInTransaction(c *context.SymphonicContext, callback TxCallback) error {
-	tx := config.DB().Begin()
+	tx := Gorm().Begin()
 
 	defer func() {
 		if r := recover(); nil != r {

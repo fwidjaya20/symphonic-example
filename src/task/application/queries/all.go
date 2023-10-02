@@ -14,15 +14,15 @@ type AllHandler struct {
 	service service.TaskService
 }
 
-func (h AllHandler) Execute(c echo.Context) ([]public.TaskResponse, error) {
+func (h AllHandler) Execute(c echo.Context, request public.GetTasksRequest) ([]public.TaskResponse, error) {
 	var (
 		err      error
 		tasks    []model.Task
-		response []public.TaskResponse
+		response = make([]public.TaskResponse, 0)
 	)
 
-	if tasks, err = h.service.All.Execute(c); nil != err {
-		return nil, exception.New(err, constant.ErrCreateRecord, err.Error(), nil)
+	if tasks, err = h.service.All.Execute(c, request); nil != err {
+		return response, exception.New(err, constant.ErrCreateRecord, err.Error(), nil)
 	}
 
 	for _, it := range tasks {
@@ -32,7 +32,7 @@ func (h AllHandler) Execute(c echo.Context) ([]public.TaskResponse, error) {
 			IsCompleted: it.IsCompleted,
 			IsPriority:  it.IsPriority,
 			DueDate:     it.DueDate,
-			FmtDueDate:  carbon.Parse(it.DueDate.String()).Format("M, D Y H:i:s"),
+			FmtDueDate:  carbon.Parse(it.DueDate.String()).Format("M, d Y H:i:s O"),
 		}
 
 		if it.Description.Valid {

@@ -16,3 +16,7 @@ type CreateTaskRequest struct {
 type GetTaskRequest struct {
 	Id uuid.UUID `param:"task_id"`
 }
+
+type GetTasksRequest struct {
+	IsCompleted bool `query:"is_completed"`
+}
