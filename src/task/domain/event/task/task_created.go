@@ -3,7 +3,7 @@ package task
 import (
 	"time"
 
-	"github.com/fwidjaya20/symphonic-example/src/task/domain/model"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/entity"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/google/uuid"
 )
@@ -26,7 +26,7 @@ func (e TaskCreated) GetPayload() any {
 
 type PublisherTaskCreated struct{}
 
-func (p PublisherTaskCreated) Publish(task model.Task) error {
+func (p PublisherTaskCreated) Publish(task entity.Task) error {
 	event := TaskCreated{
 		Id:          task.Id,
 		Title:       task.Title,

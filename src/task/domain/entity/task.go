@@ -1,9 +1,11 @@
-package model
+package entity
 
 import (
 	"database/sql"
+	"fmt"
 	"time"
 
+	"github.com/golang-module/carbon"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
@@ -20,17 +22,27 @@ type Task struct {
 	DeletedAt   gorm.DeletedAt
 }
 
-func (m *Task) TableName() string {
+func (t *Task) TableName() string {
 	return "tasks"
 }
 
-func (m *Task) BeforeCreate(tx *gorm.DB) error {
+func (t *Task) BeforeCreate(tx *gorm.DB) error {
 	uid, err := uuid.NewRandom()
 	if nil != err {
 		return err
 	}
 
-	m.Id = uid
+	t.Id = uid
 
 	return nil
+}
+
+func (t *Task) IsValid() (bool, error) {
+	var err error
+
+	if carbon.Parse(t.DueDate.String()).IsPast() {
+		err = fmt.Errorf("the 'due_date' on this task was incorrect")
+	}
+
+	return nil == err, err
 }

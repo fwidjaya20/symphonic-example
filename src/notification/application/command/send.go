@@ -7,7 +7,7 @@ import (
 	"github.com/fwidjaya20/symphonic-example/src/notification/application/public"
 	"github.com/fwidjaya20/symphonic-example/src/notification/constant"
 	"github.com/fwidjaya20/symphonic-example/src/notification/domain/entity"
-	"github.com/fwidjaya20/symphonic-example/src/notification/infrastructure/cloud_messaging"
+	"github.com/fwidjaya20/symphonic-example/src/notification/domain/factory"
 	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 )
@@ -19,7 +19,7 @@ func (h SendHandler) Execute(c echo.Context, request public.SendNotificationRequ
 		err error
 	)
 
-	client := cloud_messaging.GetCloudMessaging(request.Channel)
+	client := factory.GetCloudMessaging(request.Channel)
 	if nil == client {
 		err = fmt.Errorf("channel '%s' was not supported", request.Channel.ToString())
 		facades.Logger().Errorf("[Notification] get cloud messaging client error: %v", err.Error())

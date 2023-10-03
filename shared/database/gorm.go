@@ -24,19 +24,19 @@ func Gorm() *gorm.DB {
 			SkipDefaultTransaction:   true,
 			DisableNestedTransaction: true,
 			NowFunc: func() time.Time {
-				ti, _ := time.LoadLocation(facades.Config().GetString("database.timezone"))
+				ti, _ := time.LoadLocation(facades.Config().GetString("repository.timezone"))
 				return time.Now().In(ti)
 			},
 		}
 
 		if instanceDB, err = gorm.Open(postgres.Open(fmt.Sprintf(
 			"host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=%s",
-			facades.Config().GetString("database.connections.postgresql.host"),
-			facades.Config().GetString("database.connections.postgresql.username"),
-			facades.Config().GetString("database.connections.postgresql.password"),
-			facades.Config().GetString("database.connections.postgresql.database"),
-			facades.Config().GetString("database.connections.postgresql.port"),
-			facades.Config().GetString("database.timezone"),
+			facades.Config().GetString("repository.connections.postgresql.host"),
+			facades.Config().GetString("repository.connections.postgresql.username"),
+			facades.Config().GetString("repository.connections.postgresql.password"),
+			facades.Config().GetString("repository.connections.postgresql.repository"),
+			facades.Config().GetString("repository.connections.postgresql.port"),
+			facades.Config().GetString("repository.timezone"),
 		)), &config); nil != err {
 			facades.Logger().Panic(err.Error())
 		}

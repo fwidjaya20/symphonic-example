@@ -1,11 +1,11 @@
-package google
+package calendar
 
 import (
 	"fmt"
 	"strings"
 
 	"github.com/fwidjaya20/symphonic-example/src/calendar/domain/entity"
-	"github.com/fwidjaya20/symphonic-example/src/calendar/infrastructure/calendar"
+	"github.com/fwidjaya20/symphonic-example/src/calendar/domain/interface/calendar"
 	"github.com/golang-module/carbon"
 )
 

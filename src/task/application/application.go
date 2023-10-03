@@ -4,7 +4,7 @@ import (
 	"github.com/fwidjaya20/symphonic-example/src/task/application/command"
 	"github.com/fwidjaya20/symphonic-example/src/task/application/query"
 	"github.com/fwidjaya20/symphonic-example/src/task/domain/event"
-	"github.com/fwidjaya20/symphonic-example/src/task/domain/service"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/interface/repository"
 )
 
 type TaskApplication struct {
@@ -13,10 +13,10 @@ type TaskApplication struct {
 	GetById query.GetByIdHandler
 }
 
-func NewTaskApplication(event event.TaskEvent, service service.TaskService) TaskApplication {
+func NewTaskApplication(event event.TaskEvent, repository repository.Repository) TaskApplication {
 	return TaskApplication{
-		Create:  command.NewCreateHandler(event, service),
-		All:     query.NewAllHandler(service),
-		GetById: query.NewGetByIdHandler(service),
+		Create:  command.NewCreateHandler(event, repository),
+		All:     query.NewAllHandler(repository),
+		GetById: query.NewGetByIdHandler(repository),
 	}
 }

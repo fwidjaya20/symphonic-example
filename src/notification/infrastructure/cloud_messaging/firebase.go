@@ -4,11 +4,12 @@ import (
 	"fmt"
 
 	"github.com/fwidjaya20/symphonic-example/src/notification/domain/entity"
+	DomainInterface "github.com/fwidjaya20/symphonic-example/src/notification/domain/interface/cloud_messaging"
 )
 
 type FCM struct{}
 
-func NewFirebaseCloudMessaging() CloudMessaging {
+func NewFirebaseCloudMessaging() DomainInterface.CloudMessaging {
 	return &FCM{}
 }
 

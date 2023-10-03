@@ -26,7 +26,7 @@ func (l *TaskCreatedSubscriber) Handle(job ContractEvent.Job) error {
 	if err := ioc.Injector().Notification.Send.Execute(l.ctx, public.SendNotificationRequest{
 		Channel: NotificationEnum.FirebaseCloudMessaging,
 		From:    "no-reply@todo.app",
-		To:      "T9Si7vuA62PHg6X3+lTVUB9wxCOk73daX5Fn72dBisw=",
+		To:      "T9Si7vuA62PHg6X3+lTVUB9wxCOk73daX5Fn72dBisw=MOCK",
 		Subject: "New Task Created",
 		Body:    fmt.Sprintf("A new task '%s' has been added to your to-do list. Please make sure to complete the task before %s.", task.Title, carbon.Parse(task.DueDate.String()).Format("M, d Y H:i:s O")),
 	}); nil != err {

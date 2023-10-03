@@ -1,54 +1,49 @@
 package command
 
 import (
+	"fmt"
+
 	"github.com/fwidjaya20/symphonic-example/shared/exception"
 	"github.com/fwidjaya20/symphonic-example/src/task/application/public"
 	"github.com/fwidjaya20/symphonic-example/src/task/constant"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/entity"
 	"github.com/fwidjaya20/symphonic-example/src/task/domain/event"
-	"github.com/fwidjaya20/symphonic-example/src/task/domain/model"
-	"github.com/fwidjaya20/symphonic-example/src/task/domain/service"
-	"github.com/golang-module/carbon"
+	"github.com/fwidjaya20/symphonic-example/src/task/domain/interface/repository"
+	"github.com/fwidjaya20/symphonic-example/src/task/transformer"
+	"github.com/fwidjaya20/symphonic/facades"
 	"github.com/labstack/echo/v4"
 )
 
 type CreateHandler struct {
-	event   event.TaskEvent
-	service service.TaskService
+	event      event.TaskEvent
+	repository repository.Repository
 }
 
 func (h CreateHandler) Execute(c echo.Context, request public.CreateTaskRequest) (*public.TaskResponse, error) {
 	var (
 		err  error
-		task *model.Task
+		task entity.Task
 	)
 
-	if task, err = h.service.Create.Execute(c, request); nil != err {
-		return nil, exception.New(err, constant.ErrCreateRecord, err.Error(), nil)
+	task = transformer.TransformRequestToEntity(request)
+
+	if err := h.repository.Create(c, &task); nil != err {
+		facades.Logger().Errorf("[Task] create new task error: %v", err.Error())
+		return nil, fmt.Errorf("failed to create new task")
 	}
 
-	if err = h.event.TaskCreated.Publish(*task); nil != err {
+	if err = h.event.TaskCreated.Publish(task); nil != err {
 		return nil, exception.New(err, constant.ErrPublishCreatedRecord, err.Error(), nil)
 	}
 
-	response := public.TaskResponse{
-		Id:          task.Id,
-		Title:       task.Title,
-		IsCompleted: task.IsCompleted,
-		IsPriority:  task.IsPriority,
-		DueDate:     task.DueDate,
-		FmtDueDate:  carbon.Parse(task.DueDate.String()).Format("M, d Y H:i:s O"),
-	}
-
-	if task.Description.Valid {
-		response.Description = &task.Description.String
-	}
+	response := transformer.TransformTaskEntityAsResponse(task)
 
 	return &response, nil
 }
 
-func NewCreateHandler(event event.TaskEvent, service service.TaskService) CreateHandler {
+func NewCreateHandler(event event.TaskEvent, repository repository.Repository) CreateHandler {
 	return CreateHandler{
-		event:   event,
-		service: service,
+		event:      event,
+		repository: repository,
 	}
 }
